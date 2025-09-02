@@ -58,8 +58,8 @@ make run-server (build and run project)
 - Fetching a particular service
     - including a method for retrieving its versions
 - Include tests (unit, integration) or a test plan
-    - Integration : Setup Done, one dummy test added
-    - Unit : Not done
+    - Integration
+    - Unit test for Service Layer
 - Provide authentication/authorization on the API : Not Done
 - Add CRUD operations to the API
     - Read : Done
