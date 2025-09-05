@@ -10,6 +10,7 @@ type RouteOption func(server *gin.Engine)
 func NewAPIServer(
 	servicesControllers IServiceAPIController,
 ) *gin.Engine {
+	gin.SetMode(gin.ReleaseMode)
 	server := server.Build()
 	InitRoutes(server, WithPathController(
 		"/v1/service", servicesControllers,

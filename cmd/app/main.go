@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/ikshavaku/catalogue/api"
 	"github.com/ikshavaku/catalogue/utils"
+	"go.uber.org/zap"
 )
 
 func main() {
@@ -16,6 +17,11 @@ func main() {
 		log.Printf("%+v\n", err)
 		panic(err)
 	}
+	// Disable Gin’s default debug logs
+	gin.SetMode(gin.ReleaseMode)
+
+	// Initialize Zap logger
+	_, err = zap.NewProduction()
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	s := api.NewAPIServer(InjectServicesController())

@@ -8,12 +8,14 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"
+	"go.uber.org/zap"
 )
 
 func Build() *gin.Engine {
+	logger, _ := zap.NewProduction()
 	app := gin.New()
-	app.Use(gin.LoggerWithWriter(gin.DefaultWriter))
-	app.Use(gin.Recovery())
+	app.Use(ZapLogger(logger))
+	app.Use(ZapRecovery(logger))
 	return app
 }
 

@@ -2,8 +2,6 @@ package repositories
 
 import (
 	"context"
-	"fmt"
-	"log"
 	"strconv"
 
 	"github.com/ikshavaku/catalogue/store"
@@ -43,7 +41,6 @@ func (s *SerivcesRepository) ListServices(ctx context.Context, params store.List
 		Limit:      int32(size),
 		Offset:     int32(offset),
 	}
-	log.Printf("%+v", queryParams)
 	rows, err := s.Queries.ListServices(ctx, queryParams)
 	if err != nil {
 		return store.PaginatedResponse[store.ServiceDAO]{}, err
@@ -52,7 +49,6 @@ func (s *SerivcesRepository) ListServices(ctx context.Context, params store.List
 	for _, r := range rows {
 		dao = append(dao, r.TODAO())
 	}
-	log.Printf("%+v", dao)
 	// 4. Wrap response
 	return store.PaginatedResponse[store.ServiceDAO]{
 		Total: total,
@@ -65,7 +61,6 @@ func (s *SerivcesRepository) ListServices(ctx context.Context, params store.List
 func (s *SerivcesRepository) GetServiceByID(ctx context.Context, params store.GetServiceByIDParams) (store.ServiceDAO, error) {
 	id, err := strconv.ParseInt(params.ID, 10, 32)
 	if err != nil {
-		fmt.Println("Error:", err)
 		return store.ServiceDAO{}, err
 	}
 	res, err := s.Queries.GetServiceByID(ctx, int32(id))
@@ -78,7 +73,6 @@ func (s *SerivcesRepository) GetServiceByID(ctx context.Context, params store.Ge
 func (s *SerivcesRepository) ListServiceVersions(ctx context.Context, params store.ListServiceVersionsByServiceIDParams) ([]store.ServiceVersionDAO, error) {
 	id, err := strconv.ParseInt(params.ID, 10, 32)
 	if err != nil {
-		fmt.Println("Error:", err)
 		return []store.ServiceVersionDAO{}, err
 	}
 	res, err := s.Queries.ListServiceVersionsByServiceID(ctx, int32(id))
