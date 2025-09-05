@@ -3,7 +3,6 @@ MIGRATIONS_DIR=./migrations
 
 build:
 	. ./local.envrc
-	echo $(SERVER_PORT)
 	go mod download
 	go generate -tags wireinject ./...
 	CGO_ENABLED=0 GOARCH=amd64 go build -o ./target/build ./cmd/app/...
