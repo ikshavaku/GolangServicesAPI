@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my-go-app
+    depends_on:
+      - db
+    working_dir: /app
+    env_file:
+      - local.envrc   # load all vars directly
+    ports:
+      - "8000:8000"   # maps SERVER_PORT to localhost:8000
+    command: ["./entrypoint.sh"]
+
+  db:
+    image: postgres:15
+    container_name: my-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: dummypass
+      POSTGRES_DB: local_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:

@@ -26,9 +26,7 @@ https://docs.google.com/document/d/1K2PcGH_QTGd7PYwlb4Y5mRGovZ4vrbiu0uVCxF1Jrnw/
 ### Steps to run the project
 
 ```shell
-source local.envrc (export config via env)
-make goose-up (runs migrations)
-make run-server (build and run project)
+docker-compose up
 ```
 
 ### Decisions
