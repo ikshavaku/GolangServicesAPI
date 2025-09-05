@@ -9,10 +9,10 @@ https://docs.google.com/document/d/1K2PcGH_QTGd7PYwlb4Y5mRGovZ4vrbiu0uVCxF1Jrnw/
 ### Stack
 
 - Backend : Golang
-    - Http Server : Gin
-    - DB Integration : sqlc
-    - Build tool: Wire
-    - DB migration : goose
+    - Http Server : [Gin](https://github.com/gin-gonic/gin)
+    - DB Integration : [sqlc](https://github.com/sqlc-dev/sqlc)
+    - Build tool: [Wire](https://github.com/google/wire)
+    - DB migration : [goose](https://github.com/pressly/goose)
 - Database : Postgres
 
 ### Features
@@ -22,6 +22,10 @@ https://docs.google.com/document/d/1K2PcGH_QTGd7PYwlb4Y5mRGovZ4vrbiu0uVCxF1Jrnw/
 - **Layered Approach** : API is divided into multiple layers i.e API-->Service-->Datastore(DB) each layer managing it's own scope.
 
 - **Dependency Injection** : Extensively used to ensure contract based development where every layer expects a contract to be followed by the downstream layer and the implementation is abstracted out. Wire is used to tie the dependencies togather.
+
+- **Dockerized**
+
+- **JSON Logging Enabled**
 
 ### Steps to run the project
 
