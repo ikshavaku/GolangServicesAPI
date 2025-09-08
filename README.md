@@ -50,23 +50,6 @@ The API is built in **Go** using modern tooling and structured for production-re
 
 ---
 
-## 📂 Project Structure  
-
-```
-.
-├── cmd/api/ # Application entrypoint
-├── internal/
-│ ├── api/ # HTTP handlers, routing
-│ ├── service/ # Business logic
-│ ├── store/ # Database access (sqlc-generated)
-│ └── version/ # Version-related logic
-├── migrations/ # Goose migrations
-├── Dockerfile # Build container
-├── docker-compose.yml# Run DB + API together
-├── Makefile # Common tasks (build, run, test, migrate)
-└── README.md # Project documentation
-```
-
 ### Stack
 
 - Backend : Golang
